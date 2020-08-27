@@ -62,4 +62,22 @@ class ConditionTest {
         condition.setCurrentTemperature(100);
         assertEquals(0, condition.getCurrentTemperature());
     }
+    @Test
+    public void currentTemperatureOnLimitNoIncr() {
+        Condition condition = new Condition();
+        condition.setMinTemperature(15);
+        condition.setMaxTemperature(30);
+        condition.setCurrentTemperature(30);
+        condition.increaseCurrentTemperature();
+        assertEquals(30, condition.getCurrentTemperature());
+    }
+    @Test
+    public void currentTemperatureOnLimitNoDecr() {
+        Condition condition = new Condition();
+        condition.setMinTemperature(15);
+        condition.setMaxTemperature(30);
+        condition.setCurrentTemperature(15);
+        condition.decreasedCurrentTemperature();
+        assertEquals(15, condition.getCurrentTemperature());
+    }
 }
